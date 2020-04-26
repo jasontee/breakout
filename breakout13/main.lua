@@ -80,21 +80,21 @@ function love.load()
     -- set up our sound effects; later, we can just index this table and
     -- call each entry's `play` method
     gSounds = {
-        ['paddle-hit'] = love.audio.newSource('sounds/paddle_hit.wav'),
-        ['score'] = love.audio.newSource('sounds/score.wav'),
-        ['wall-hit'] = love.audio.newSource('sounds/wall_hit.wav'),
-        ['confirm'] = love.audio.newSource('sounds/confirm.wav'),
-        ['select'] = love.audio.newSource('sounds/select.wav'),
-        ['no-select'] = love.audio.newSource('sounds/no-select.wav'),
-        ['brick-hit-1'] = love.audio.newSource('sounds/brick-hit-1.wav'),
-        ['brick-hit-2'] = love.audio.newSource('sounds/brick-hit-2.wav'),
-        ['hurt'] = love.audio.newSource('sounds/hurt.wav'),
-        ['victory'] = love.audio.newSource('sounds/victory.wav'),
-        ['recover'] = love.audio.newSource('sounds/recover.wav'),
-        ['high-score'] = love.audio.newSource('sounds/high_score.wav'),
-        ['pause'] = love.audio.newSource('sounds/pause.wav'),
+        ['paddle-hit'] = love.audio.newSource(love.sound.newSoundData('sounds/paddle_hit.wav')),
+        ['score'] = love.audio.newSource(love.sound.newSoundData('sounds/score.wav')),
+        ['wall-hit'] = love.audio.newSource(love.sound.newSoundData('sounds/wall_hit.wav')),
+        ['confirm'] = love.audio.newSource(love.sound.newSoundData('sounds/confirm.wav')),
+        ['select'] = love.audio.newSource(love.sound.newSoundData('sounds/select.wav')),
+        ['no-select'] = love.audio.newSource(love.sound.newSoundData('sounds/no-select.wav')),
+        ['brick-hit-1'] = love.audio.newSource(love.sound.newSoundData('sounds/brick-hit-1.wav')),
+        ['brick-hit-2'] = love.audio.newSource(love.sound.newSoundData('sounds/brick-hit-2.wav')),
+        ['hurt'] = love.audio.newSource(love.sound.newSoundData('sounds/hurt.wav')),
+        ['victory'] = love.audio.newSource(love.sound.newSoundData('sounds/victory.wav')),
+        ['recover'] = love.audio.newSource(love.sound.newSoundData('sounds/recover.wav')),
+        ['high-score'] = love.audio.newSource(love.sound.newSoundData('sounds/high_score.wav')),
+        ['pause'] = love.audio.newSource(love.sound.newSoundData('sounds/pause.wav')),
 
-        ['music'] = love.audio.newSource('sounds/music.wav')
+        ['music'] = love.audio.newSource(love.sound.newSoundData('sounds/music.wav'))
     }
 
     -- the state machine we'll be using to transition between various states
