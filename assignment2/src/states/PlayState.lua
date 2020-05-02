@@ -34,6 +34,9 @@ function PlayState:enter(params)
 	self.powerups = {}
 	self.balls = {}
 	table.insert(self.balls, params.ball)
+	
+	self.paddleSize = 0
+	self.currentScore = 0
 
     -- give ball random starting velocity
     self.balls[1].dx = math.random(-200, 200)
@@ -72,6 +75,7 @@ function PlayState:update(dt)
 			elseif powerup.type == 9 then
 			
 				-- spawns two extra balls
+				
 				b1 = Ball(self.balls[1].skin)
 				b1.x = self.balls[1].x
 				b1.y = self.balls[1].y
@@ -127,6 +131,8 @@ function PlayState:update(dt)
 		if ball.y >= VIRTUAL_HEIGHT then
 			if self:checkBallsInPlay() == false then 
 				self.health = self.health - 1
+				self.paddle.size = 1
+				self.paddle.width = 32
 				gSounds['hurt']:play()
 
 				if self.health == 0 then
@@ -159,8 +165,8 @@ function PlayState:update(dt)
 
 				-- add to score
 				self.score = self.score + (brick.tier * 200 + brick.color * 25)
-
-				-- trigger the brick's hit function, which removes it from play
+				self.currentScore = self.currentScore + (brick.tier * 200 + brick.color * 25)
+				-- trigger the 	rick's hit function, which removes it from play
 				brick:hit()
 				
 				if self.score > 500 then
@@ -168,6 +174,18 @@ function PlayState:update(dt)
 					powerup.inPlay = true
 					table.insert(self.powerups, powerup)
 				end
+				
+				if self.currentScore >= 300 and self.currentScore < 599 then
+					self.paddle.size = 2
+					self.paddle.width =  64
+				elseif self.currentScore >= 600 and self.currentScore < 999 then
+					self.paddle.size = 3
+					self.paddle.width =  96
+				elseif self.currentScore >= 1000 then
+					self.paddle.size = 4
+					self.paddle.width =  128
+				end
+				
 
 				-- if we have enough points, recover a point of health
 				if self.score > self.recoverPoints then
